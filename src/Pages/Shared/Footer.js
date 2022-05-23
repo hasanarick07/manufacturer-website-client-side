@@ -52,7 +52,7 @@ const Footer = () => {
       </footer>
       <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
         <div>
-          <p>Copyright &copy; {year} - All right reserved by manufacturer</p>
+          <p>Copyright &copy; {year} - All right reserved by Attar</p>
         </div>
       </footer>
      </div>

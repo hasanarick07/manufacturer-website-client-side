@@ -111,7 +111,7 @@ const Navbar = () => {
           data-tip={user?.email}
         >
           <div class="w-12 rounded-full ">
-            {user ? <img src={user?.photoURL} alt="" /> : ""}
+            {user && user?.photoURL !== null ? <img src={user?.photoURL} alt="" /> : ""}
           </div>
         </div>
         <Link to="" class="btn md:hidden">
