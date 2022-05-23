@@ -4,11 +4,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
-import userIcon from "../../assets/images/User.svg";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
-  console.log(user?.email);
+  //   console.log(user);
 
   const logout = () => {
     signOut(auth);
@@ -48,6 +47,7 @@ const Navbar = () => {
   }
   if (error) {
   }
+
   return (
     <div class="navbar bg-base-100">
       <div class="navbar-start">
@@ -58,10 +58,35 @@ const Navbar = () => {
             data-tip={user?.email}
           >
             <div class="w-16 tooltip rounded-full">
-              {user ? (
+              {user && user?.photoURL !== null ? (
                 <img src={user?.photoURL} alt="" />
               ) : (
-                <img src={userIcon} alt="" />
+                <label class="btn btn-circle swap swap-rotate">
+                  {/* <!-- this hidden checkbox controls the state --> */}
+                  <input type="checkbox" />
+
+                  {/* <!-- hamburger icon --> */}
+                  <svg
+                    class="swap-off fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 512 512"
+                  >
+                    <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+                  </svg>
+
+                  {/* <!-- close icon --> */}
+                  <svg
+                    class="swap-on fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 512 512"
+                  >
+                    <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+                  </svg>
+                </label>
               )}
             </div>
           </div>
@@ -86,11 +111,7 @@ const Navbar = () => {
           data-tip={user?.email}
         >
           <div class="w-12 rounded-full ">
-          {user ? (
-                <img src={user?.photoURL} alt="" />
-              ) : (
-               ''
-              )}
+            {user ? <img src={user?.photoURL} alt="" /> : ""}
           </div>
         </div>
         <Link to="" class="btn md:hidden">
