@@ -4,6 +4,8 @@ import Blogs from "./Pages/Blogs/Blogs";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import ErrorPage from "./Pages/Error/ErrorPage";
 import Home from "./Pages/Home/Home";
+import LogIn from "./Pages/Log/LogIn";
+import Register from "./Pages/Log/Register";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import Products from "./Pages/Products/Products";
 import Footer from "./Pages/Shared/Footer";
@@ -20,6 +22,8 @@ function App() {
         <Route path="/portfolio" element={<MyPortfolio />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/products" element={<Products />}></Route>
+        <Route path="/login" element={<LogIn />}></Route>
+        <Route path="/register" element={<Register />}></Route>
         <Route path="*" element={<ErrorPage />}></Route>
       </Routes>
       <Footer />

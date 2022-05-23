@@ -1,99 +1,99 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+import Loading from "./Loading";
+import userIcon from "../../assets/images/User.svg";
 
 const Navbar = () => {
+  const [user, loading, error] = useAuthState(auth);
+  console.log(user?.email);
+
+  const logout = () => {
+    signOut(auth);
+  };
+
+  const menu = (
+    <>
+      <li>
+        <Link to="">Home</Link>
+      </li>
+      <li>
+        <Link to="">Product</Link>
+      </li>
+      <li>
+        <Link to="">Blogs</Link>
+      </li>
+      <li>
+        <Link to="">My Portfolio</Link>
+      </li>
+      <li>
+        {user ? (
+          <button
+            className=" btn-ghost  tooltip tooltip-right tooltip-accent  "
+            onClick={logout}
+            data-tip={user?.email}
+          >
+            Log Out
+          </button>
+        ) : (
+          <Link to="/login">Log In</Link>
+        )}
+      </li>
+    </>
+  );
+  if (loading) {
+    return <Loading></Loading>;
+  }
+  if (error) {
+  }
   return (
     <div class="navbar bg-base-100">
       <div class="navbar-start">
         <div class="dropdown">
-          <label tabindex="0" class="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
+          <div
+            tabIndex="0"
+            class="avatar md:hidden tooltip tooltip-right"
+            data-tip={user?.email}
+          >
+            <div class="w-16 tooltip rounded-full">
+              {user ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+                <img src={userIcon} alt="" />
+              )}
+            </div>
+          </div>
           <ul
-            tabindex="0"
+            tabIndex="0"
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link to="">Item 1</Link>
-            </li>
-            <li tabindex="0">
-              <Link to="" class="justify-between">
-                Parent
-                <svg
-                  class="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </Link>
-              <ul class="p-2">
-                <li>
-                  <Link to="">Submenu 1</Link>
-                </li>
-                <li>
-                  <Link to="">Submenu 2</Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link to="">Item 3</Link>
-            </li>
+            {menu}
           </ul>
         </div>
         <Link to="" class="btn btn-ghost normal-case text-xl">
-          Manufacturer
+          Attar
         </Link>
       </div>
       <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0">
-          <li>
-            <Link to="">Item 1</Link>
-          </li>
-          <li tabindex="0">
-            <Link to="">
-              Parent
-              <svg
-                class="fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-              </svg>
-            </Link>
-            <ul class="p-2">
-              <li>
-                <Link to="">Submenu 1</Link>
-              </li>
-              <li>
-                <Link to="">Submenu 2</Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <Link to="">Item 3</Link>
-          </li>
-        </ul>
+        <ul class="menu menu-horizontal p-0">{menu}</ul>
       </div>
-      <div class="navbar-end">
-        <Link to="" class="btn">
+      <div class="navbar-end ">
+        <div
+          tabIndex="0"
+          class="avatar md:block hidden tooltip tooltip-left"
+          data-tip={user?.email}
+        >
+          <div class="w-12 rounded-full ">
+          {user ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+               ''
+              )}
+          </div>
+        </div>
+        <Link to="" class="btn md:hidden">
           Get started
         </Link>
       </div>
