@@ -1,12 +1,12 @@
 import React from "react";
 import SandpaperCarousel from "./SandpaperCarousel";
-import Tools from "./Tools";
+import HomeTools from "./HomeTools";
 
 const Home = () => {
   return (
     <div>
       <SandpaperCarousel />
-      <Tools/>
+      <HomeTools/>
     </div>
   );
 };
