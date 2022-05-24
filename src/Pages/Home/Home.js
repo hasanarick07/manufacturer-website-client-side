@@ -1,10 +1,12 @@
 import React from "react";
-import AttarCarousel from "./AttarCarousel";
+import SandpaperCarousel from "./SandpaperCarousel";
 
 const Home = () => {
-  return <div>
-    <AttarCarousel/>
-  </div>;
+  return (
+    <div>
+      <SandpaperCarousel />
+    </div>
+  );
 };
 
 export default Home;
