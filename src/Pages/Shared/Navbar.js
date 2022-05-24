@@ -16,10 +16,10 @@ const Navbar = () => {
   const menu = (
     <>
       <li>
-        <Link to="">Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="">Tools</Link>
+        <Link to="/tools">Tools</Link>
       </li>
       <li>
         <Link to="">Blogs</Link>
@@ -111,7 +111,11 @@ const Navbar = () => {
           data-tip={user?.email}
         >
           <div class="w-12 rounded-full ">
-            {user && user?.photoURL !== null ? <img src={user?.photoURL} alt="" /> : ""}
+            {user && user?.photoURL !== null ? (
+              <img src={user?.photoURL} alt="" />
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <Link to="" class="btn md:hidden">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import Loading from "../Shared/Loading";
 import HomeTool from "./HomeTool";
 
@@ -14,6 +15,7 @@ const HomeTools = () => {
     // console.log(newTool);
     setNewTools(newTool);
   }, [tools]);
+  const navigate = useNavigate();
   if (isLoading) {
     return <Loading></Loading>;
   }
@@ -25,7 +27,12 @@ const HomeTools = () => {
           <HomeTool key={tool._id} tool={tool} />
         ))}
       </div>
-      <button class="btn btn-wide btn-primary my-7">Explore More Tools</button>
+      <button
+        onClick={() => navigate("/tools")}
+        class="btn btn-wide btn-primary my-7"
+      >
+        Explore More Tools
+      </button>
     </div>
   );
 };
