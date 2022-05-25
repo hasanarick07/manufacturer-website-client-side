@@ -69,7 +69,7 @@ const BuyNowPage = () => {
   };
   return (
     <div>
-      <div class="hero min-h-screen bg-base-200">
+      <div class="hero min-h-screen bg-neutral">
         <div class="hero-content flex-col lg:flex-row text-left">
           <img
             src={picture}
