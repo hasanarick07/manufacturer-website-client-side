@@ -2,7 +2,14 @@ import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Blogs from "./Pages/Blogs/Blogs";
+import AddProduct from "./Pages/Dashboard/AddProduct";
+import AddReview from "./Pages/Dashboard/AddReview";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
+import ManageAllOrders from "./Pages/Dashboard/ManageAllOrders";
+import ManageProducts from "./Pages/Dashboard/ManageProducts";
+import MyOrders from "./Pages/Dashboard/MyOrders";
+import MyProfile from "./Pages/Dashboard/MyProfile";
 import ErrorPage from "./Pages/Error/ErrorPage";
 import BuyNowPage from "./Pages/Home/BuyNowPage";
 import Home from "./Pages/Home/Home";
@@ -23,7 +30,15 @@ function App() {
         <Route path="/home" element={<Home />}></Route>
         <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/portfolio" element={<MyPortfolio />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<MyProfile />}></Route>
+          <Route path="review" element={<AddReview />}></Route>
+          <Route path="myOrder" element={<MyOrders />}></Route>
+          <Route path="manageAllOrders" element={<ManageAllOrders />}></Route>
+          <Route path="addProduct" element={<AddProduct />}></Route>
+          <Route path="makeAdmin" element={<MakeAdmin />}></Route>
+          <Route path="manageProducts" element={<ManageProducts />}></Route>
+        </Route>
         <Route path="/tools" element={<Tools />}></Route>
         <Route
           path="/tool/:id"

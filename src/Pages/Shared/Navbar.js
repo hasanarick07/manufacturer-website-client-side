@@ -27,6 +27,7 @@ const Navbar = () => {
       <li>
         <Link to="">My Portfolio</Link>
       </li>
+      <li>{user ? <Link to="/dashboard">Dashboard</Link> : ""}</li>
       <li>
         {user ? (
           <button
@@ -45,7 +46,7 @@ const Navbar = () => {
   if (loading) {
     return <Loading></Loading>;
   }
- 
+
   return (
     <div class="navbar bg-base-100">
       <div class="navbar-start">
@@ -116,9 +117,7 @@ const Navbar = () => {
             )}
           </div>
         </div>
-        <Link to="" class="btn md:hidden">
-          Get started
-        </Link>
+        
       </div>
     </div>
   );

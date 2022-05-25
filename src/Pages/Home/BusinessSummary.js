@@ -7,6 +7,7 @@ import success from '../../assets/images/success.png'
 const BusinessSummary = () => {
   return (
     <div>
+      <h1 className="text-4xl my-7 font-black">A Glance of Our Business Summary</h1>
       <div class="stats stats-vertical lg:stats-horizontal shadow bg-neutral md:w-md lg:w-lg">
         <div class="stat">
           <div class="stat-figure text-secondary">
@@ -14,7 +15,7 @@ const BusinessSummary = () => {
             
           </div>
           <div class="stat-title">Served</div>
-          <div class="stat-value">100+</div>
+          <div class="stat-value">10K+</div>
           <div class="stat-desc">Customers</div>
         </div>
         <div class="stat">
@@ -31,7 +32,7 @@ const BusinessSummary = () => {
           <img src={success} className='w-16' alt="" />
           </div>
           <div class="stat-title">Achieved</div>
-          <div class="stat-value">33K+ </div>
+          <div class="stat-value">10K+ </div>
           <div class="stat-desc">Reviews</div>
         </div>
 
