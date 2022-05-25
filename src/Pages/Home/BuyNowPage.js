@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
@@ -18,14 +19,13 @@ const BuyNowPage = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm({
     mode: "onChange",
   });
 
   // console.log(tool);
-  const onSubmit = data => {
-    console.log(data);
-  };
+
   if (isLoading || loading) {
     return <Loading></Loading>;
   }
@@ -39,6 +39,34 @@ const BuyNowPage = () => {
     description,
   } = tool;
   // console.log(tool.name);
+  const onSubmit = data => {
+    // console.log(name);
+    const order = {
+      productName:name,
+      customerName: data.name,
+      email: data.email,
+      address: data.address,
+      number: data.number,
+      orderQuantity: data.quantity,
+    };
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.result.insertedId) {
+          toast.success("Order Placed");
+          reset();
+        } else {
+          toast.error("failed to place order");
+        }
+      });
+  };
   return (
     <div>
       <div class="hero min-h-screen bg-base-200">
@@ -55,10 +83,8 @@ const BuyNowPage = () => {
               Price : <span className="text-2xl">&#2547;</span> {price}
               &#x0002F;piece
             </p>
-            <p >
-              Minimum Order Quantity : {minimumOrderQuantity} PC
-            </p>
-            <p >Available Stock : {quantity} PC</p>
+            <p>Minimum Order Quantity : {minimumOrderQuantity} PC</p>
+            <p>Available Stock : {quantity} PC</p>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control w-full max-w-xs mt-2">
                 <input
