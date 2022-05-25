@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import logoAtor from "../../assets/images/LogAtor.jpg";
+import useToken from "../Hooks/useToken";
 
 const Register = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
@@ -27,6 +28,8 @@ const Register = () => {
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+  const [token] = useToken(user || googleUser);
+
   const onSubmit = async data => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
@@ -35,7 +38,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  if (user) {
+  if (token) {
     navigate("/");
   }
 

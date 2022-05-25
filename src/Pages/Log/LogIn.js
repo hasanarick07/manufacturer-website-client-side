@@ -8,6 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import useToken from "../Hooks/useToken";
 
 const LogIn = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
@@ -29,15 +30,17 @@ const LogIn = () => {
     console.log(data.email);
   };
 
+  const [token] = useToken(user || googleUser);
+
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [from, navigate, user]);
+  }, [from, navigate, token]);
 
   let logInError;
 
