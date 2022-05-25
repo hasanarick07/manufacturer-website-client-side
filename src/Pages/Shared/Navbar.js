@@ -6,7 +6,7 @@ import auth from "../../firebase.init";
 import Loading from "./Loading";
 
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   //   console.log(user);
 
   const logout = () => {
@@ -45,9 +45,7 @@ const Navbar = () => {
   if (loading) {
     return <Loading></Loading>;
   }
-  if (error) {
-  }
-
+ 
   return (
     <div class="navbar bg-base-100">
       <div class="navbar-start">

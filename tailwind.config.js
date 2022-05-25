@@ -7,23 +7,23 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: "#06b6d4",
+          primary: "#09E9F1",
 
-          secondary: "#10b981",
+          secondary: "#966FB3",
 
-          accent: "#1f2937",
+          accent: "#FFE999",
 
-          neutral: "#374151",
+          neutral: "#3B8BC4",
 
-          "base-100": "#2A303C",
+          "base-100": "#345CA8",
 
-          info: "#3ABFF8",
+          info: "#2463EB",
 
-          success: "#34d399",
+          success: "#16A249",
 
-          warning: "#FBBD23",
+          warning: "#DB7706",
 
-          error: "#F87272",
+          error: "#DC2828",
         },
       },
     ],

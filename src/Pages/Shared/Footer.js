@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <div className="footer-css">
+    <div>
      <div>
-     <footer class="footer p-10 bg-base-200 text-base-content grid-cols-3 justify-items-center">
+     <footer class="footer p-10 bg-base-100 text-base-content grid-cols-3 justify-items-center">
         <div>
           <span class="footer-title">Services</span>
           <Link to="" class="link link-hover">
@@ -50,7 +50,7 @@ const Footer = () => {
           </Link>
         </div>
       </footer>
-      <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
+      <footer class="footer footer-center p-10 bg-base-100 text-base-content rounded">
         <div>
           <p>Copyright &copy; {year} - All right reserved by Attar</p>
         </div>

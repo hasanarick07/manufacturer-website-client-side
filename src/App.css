@@ -36,9 +36,3 @@
     transform: rotate(360deg);
   }
 }
-.footer-css {
-  margin-top: 25vh;
-  display: grid;
-  bottom: 0;
-  left: 0;
-}
