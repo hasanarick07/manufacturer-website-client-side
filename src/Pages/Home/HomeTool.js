@@ -24,7 +24,7 @@ const HomeTool = tool => {
         <p>Available Stock : {quantity} PC</p>
         <p>{uses}</p>
         <div class="card-actions justify-end">
-          <button onClick={() => buyNow(_id)} class="btn btn-primary w-full">
+          <button onClick={() => buyNow(_id)} class="btn btn-primary w-full sm-w-sm md-w-md lg-w-lg">
             Buy Now
           </button>
         </div>

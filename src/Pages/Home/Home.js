@@ -2,7 +2,7 @@ import React from "react";
 import SandpaperCarousel from "./SandpaperCarousel";
 import HomeTools from "./HomeTools";
 import BusinessSummary from "./BusinessSummary";
-import Review from "./Review";
+import Reviews from "./Reviews";
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
       <SandpaperCarousel />
       <HomeTools/>
       <BusinessSummary/>
-      <Review/>
+      <Reviews/>
     </div>
   );
 };
