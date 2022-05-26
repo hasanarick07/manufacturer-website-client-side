@@ -1,16 +1,18 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
   //   console.log(user);
-
+  const navigate = useNavigate();
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
+    navigate("/");
   };
 
   const menu = (
@@ -117,7 +119,6 @@ const Navbar = () => {
             )}
           </div>
         </div>
-        
       </div>
     </div>
   );

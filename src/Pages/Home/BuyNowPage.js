@@ -11,14 +11,21 @@ const BuyNowPage = () => {
   const { id } = useParams();
   const [user, loading] = useAuthState(auth);
   // console.log(user);
-
+  // const userEmail = user?.email;
   const { data: tool, isLoading } = useQuery("buyNow", () =>
-    fetch(`http://localhost:5000/tool/${id}`).then(res => res.json())
+    fetch(`http://localhost:5000/tool/${id}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      // body: JSON.stringify(userEmail),
+    }).then(res => res.json())
   );
   const {
     register,
     formState: { errors },
     handleSubmit,
+    getValues,
     reset,
   } = useForm({
     mode: "onChange",
@@ -39,10 +46,12 @@ const BuyNowPage = () => {
     description,
   } = tool;
   // console.log(tool.name);
+  const disable = getValues("quantity") === "";
+  // console.log(disable);
   const onSubmit = data => {
     // console.log(name);
     const order = {
-      productName:name,
+      productName: name,
       customerName: data.name,
       email: data.email,
       address: data.address,
@@ -58,13 +67,33 @@ const BuyNowPage = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data);
         if (data.result.insertedId) {
           toast.success("Order Placed");
+
           reset();
         } else {
           toast.error("failed to place order");
         }
+      });
+    const currentUser = {
+      userName: data.name,
+      email: data.email,
+      address: data.address,
+      number: data.number,
+    };
+    const email = data.email;
+    console.log(currentUser, email);
+    fetch(`http://localhost:5000/user/${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
       });
   };
   return (
@@ -97,6 +126,7 @@ const BuyNowPage = () => {
                       value: ` ${quantity}`,
                       message: "Not More Than Available Stock",
                     },
+                    required: true,
                   })}
                   type="number"
                   placeholder="Order Quantity"
@@ -137,7 +167,7 @@ const BuyNowPage = () => {
               </div>
               <div className="form-control w-full max-w-xs mt-2">
                 <input
-                  {...register("address")}
+                  {...register("address", { required: true })}
                   type="text"
                   placeholder="Your Address"
                   class="input input-bordered w-full max-w-xs"
@@ -155,6 +185,7 @@ const BuyNowPage = () => {
                       value: 14,
                       message: "Provide valid Phone Number",
                     },
+                    required: true,
                   })}
                   type="number"
                   placeholder="Your Phone Number"
@@ -176,7 +207,7 @@ const BuyNowPage = () => {
 
               <input
                 type="submit"
-                disabled={errors.quantity}
+                disabled={errors.quantity || disable}
                 value="Buy Now"
                 className="btn  btn-primary w-full max-w-xs"
               />
