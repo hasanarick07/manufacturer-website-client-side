@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 const Review = props => {
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [check3, setCheck3] = useState(false);
-  const [check4, setCheck4] = useState(false);
-  const [check5, setCheck5] = useState(false);
-  console.log(props.rating);
+  console.log(props);
   const { userName, product, message, rating } = props?.rating;
+  const {
+    check1,
+    setCheck1,
+    check2,
+    setCheck2,
+    check3,
+    setCheck3,
+    check4,
+    setCheck4,
+    check5,
+    setCheck5,
+  } = props;
 
   useEffect(() => {
     if (parseInt(rating) === 1) {
@@ -26,7 +33,7 @@ const Review = props => {
       const checked5 = parseInt(rating) === 5;
       setCheck5(checked5);
     }
-  }, [rating]);
+  }, [rating, setCheck1, setCheck2, setCheck3, setCheck4, setCheck5]);
   //   console.log(check);
   return (
     <div class="card md:w-md lg:w-lg bg-neutral shadow-xl">

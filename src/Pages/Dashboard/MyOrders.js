@@ -32,7 +32,6 @@ const MyOrders = () => {
       <h2>Total Orders : {orders.length}</h2>
       <div class="overflow-x-auto w-full">
         <table class="table w-full">
-          {/* <!-- head --> */}
           <thead>
             <tr>
               <th></th>
@@ -54,7 +53,6 @@ const MyOrders = () => {
           </tbody>
         </table>
       </div>
-     
     </div>
   );
 };
