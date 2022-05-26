@@ -1,11 +1,62 @@
-import React from 'react';
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
+import auth from "../../firebase.init";
+import Loading from "../Shared/Loading";
+import Order from "./Order";
 
 const MyOrders = () => {
-    return (
-        <div>
-            hi orders
-        </div>
-    );
+  //   const [orders, setOrders] = useState([]);
+  const [user, loading] = useAuthState(auth);
+  //   console.log(orders);
+  const userEmail = user?.email;
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery(["orders", userEmail], () =>
+    fetch(`http://localhost:5000/order?email=${userEmail}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then(res => res.json())
+  );
+
+  if (loading || isLoading) {
+    return <Loading></Loading>;
+  }
+
+  return (
+    <div>
+      <h2>Total Orders : {orders.length}</h2>
+      <div class="overflow-x-auto w-full">
+        <table class="table w-full">
+          {/* <!-- head --> */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name &amp; Email</th>
+              <th>Product Name &amp; Quantity</th>
+              <th>Favorite </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order, index) => (
+              <Order
+                key={order._id}
+                refetch={refetch}
+                order={order}
+                index={index}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+     
+    </div>
+  );
 };
 
 export default MyOrders;
