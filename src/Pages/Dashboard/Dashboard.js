@@ -22,7 +22,7 @@ const Dashboard = () => {
       </label>
       <div className="drawer drawer-mobile ">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-start justify-start p-7">
+        <div className="drawer-content flex  items-start justify-center p-7 w-full sm-w-sm md-w-md lg-w-lg">
           <Outlet />
           {/* <!-- Page content here --> */}
         </div>
