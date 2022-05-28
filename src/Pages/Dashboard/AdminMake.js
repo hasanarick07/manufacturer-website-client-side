@@ -5,12 +5,15 @@ const AdminMake = ({ user, refetch }) => {
   console.log(user);
   const { userName, email, role } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://enigmatic-fortress-05419.herokuapp.com/user/admin/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then(res => res.json())
       .then(data => {
         if (data.modifiedCount > 0) {

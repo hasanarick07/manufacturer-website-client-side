@@ -24,10 +24,10 @@ const Navbar = () => {
         <Link to="/tools">Tools</Link>
       </li>
       <li>
-        <Link to="">Blogs</Link>
+        <Link to="/blogs">Blogs</Link>
       </li>
       <li>
-        <Link to="">My Portfolio</Link>
+        <Link to="/portfolio">My Portfolio</Link>
       </li>
       <li>{user ? <Link to="/dashboard">Dashboard</Link> : ""}</li>
       <li>
@@ -99,7 +99,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="" class="btn btn-ghost normal-case text-xl">
-          Attar
+        Sandpaper
         </Link>
       </div>
       <div class="navbar-center hidden lg:flex">

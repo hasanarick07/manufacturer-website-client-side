@@ -9,7 +9,7 @@ const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
   const userEmail = user?.email;
   const { data, isLoading, refetch } = useQuery("users", () =>
-    fetch(`http://localhost:5000/user/${userEmail}`, {
+    fetch(`https://enigmatic-fortress-05419.herokuapp.com/user/${userEmail}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

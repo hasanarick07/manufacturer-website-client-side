@@ -12,7 +12,7 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const { id } = useParams();
-  const url = `http://localhost:5000/order/${id}`;
+  const url = `https://enigmatic-fortress-05419.herokuapp.com/order/${id}`;
   const { data, isLoading } = useQuery(["payment", id], () =>
     fetch(url, {
       method: "GET",
@@ -24,7 +24,7 @@ const Payment = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-//   console.log(data);
+  //   console.log(data);
   return (
     <div>
       <div class="card w-96 bg-neutral ">

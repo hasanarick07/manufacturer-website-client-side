@@ -15,12 +15,15 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery(["orders", userEmail], () =>
-    fetch(`http://localhost:5000/order?email=${userEmail}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then(res => res.json())
+    fetch(
+      `https://enigmatic-fortress-05419.herokuapp.com/order?email=${userEmail}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then(res => res.json())
   );
 
   if (loading || isLoading) {
@@ -44,13 +47,8 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
-              <Order
-                key={order._id}
-                refetch={refetch}
-                order={order}
-                
-              />
+            {orders.map(order => (
+              <Order key={order._id} refetch={refetch} order={order} />
             ))}
           </tbody>
         </table>

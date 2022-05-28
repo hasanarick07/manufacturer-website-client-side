@@ -3,6 +3,8 @@ import SandpaperCarousel from "./SandpaperCarousel";
 import HomeTools from "./HomeTools";
 import BusinessSummary from "./BusinessSummary";
 import Reviews from "./Reviews";
+import ContactUs from "./ContactUs";
+import Purposes from "./Purposes";
 
 const Home = () => {
   return (
@@ -11,6 +13,8 @@ const Home = () => {
       <HomeTools/>
       <BusinessSummary/>
       <Reviews/>
+      <ContactUs/>
+      <Purposes/>
     </div>
   );
 };

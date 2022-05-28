@@ -5,7 +5,9 @@ import Loading from "../Shared/Loading";
 
 const Tools = () => {
   const { data: tools, isLoading } = useQuery("manufacturerTools", () =>
-    fetch("http://localhost:5000/tools").then(res => res.json())
+    fetch("https://enigmatic-fortress-05419.herokuapp.com/tools").then(res =>
+      res.json()
+    )
   );
 
   if (isLoading) {

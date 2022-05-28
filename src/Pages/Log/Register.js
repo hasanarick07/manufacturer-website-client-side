@@ -164,7 +164,7 @@ const Register = () => {
                   {registerError}
                   <input
                     type="submit"
-                    value="Login"
+                    value="Register"
                     className="btn btn-primary btn-outline w-full max-w-xs"
                   />
                 </form>

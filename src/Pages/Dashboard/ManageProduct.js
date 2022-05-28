@@ -1,10 +1,10 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const ManageProduct = ({  tool, refetch }) => {
+const ManageProduct = ({ tool, refetch }) => {
   const { name, price, picture, quantity, _id } = tool;
   const handleManageProductDelete = id => {
-    fetch(`http://localhost:5000/tools/${id}`, {
+    fetch(`https://enigmatic-fortress-05419.herokuapp.com/tools/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -30,7 +30,7 @@ const ManageProduct = ({  tool, refetch }) => {
       <td>{quantity}</td>
 
       <td>
-      <label for="delete" class="btn modal-button btn-xs btn-secondary">
+        <label for="delete" class="btn modal-button btn-xs btn-secondary">
           delete
         </label>
       </td>

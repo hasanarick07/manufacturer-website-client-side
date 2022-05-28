@@ -5,7 +5,7 @@ import AdminMake from "./AdminMake";
 
 const MakeAdmin = () => {
   const { data, isLoading, refetch } = useQuery("makeAdmin", () =>
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://enigmatic-fortress-05419.herokuapp.com/users`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

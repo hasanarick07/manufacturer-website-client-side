@@ -9,7 +9,9 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("manufacturerTools", () =>
-    fetch("http://localhost:5000/tools").then(res => res.json())
+    fetch("https://enigmatic-fortress-05419.herokuapp.com/tools").then(res =>
+      res.json()
+    )
   );
 
   if (isLoading) {
@@ -31,13 +33,8 @@ const ManageProducts = () => {
           </tr>
         </thead>
         <tbody>
-          {tools.map((tool) => (
-            <ManageProduct
-              tool={tool}
-              key={tool._id}
-              refetch={refetch}
-             
-            />
+          {tools.map(tool => (
+            <ManageProduct tool={tool} key={tool._id} refetch={refetch} />
           ))}
         </tbody>
       </table>

@@ -21,7 +21,7 @@ const UpdateProfile = ({ data, refetch }) => {
     };
     const email = data.email;
     console.log(currentUser, email);
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://enigmatic-fortress-05419.herokuapp.com/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

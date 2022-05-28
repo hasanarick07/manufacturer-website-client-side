@@ -32,7 +32,7 @@ const AddReview = () => {
     };
     const email = data.email;
     console.log(userRating, email);
-    fetch("http://localhost:5000/rating", {
+    fetch("https://enigmatic-fortress-05419.herokuapp.com/rating", {
       method: "POST",
       headers: {
         "content-type": "application/json",

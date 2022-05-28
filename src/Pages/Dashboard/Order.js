@@ -16,7 +16,7 @@ const Order = ({ order, refetch }) => {
   console.log(paid);
   const pName = productName.slice(0, 25);
   const handleDelete = id => {
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://enigmatic-fortress-05419.herokuapp.com/order/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

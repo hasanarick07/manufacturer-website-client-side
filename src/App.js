@@ -14,6 +14,7 @@ import Payment from "./Pages/Dashboard/Payment";
 import ErrorPage from "./Pages/Error/ErrorPage";
 import BuyNowPage from "./Pages/Home/BuyNowPage";
 import Home from "./Pages/Home/Home";
+import Purpose from "./Pages/Home/Purpose";
 import LogIn from "./Pages/Log/LogIn";
 import Register from "./Pages/Log/Register";
 import RequireAdmin from "./Pages/Log/RequireAdmin";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/home" element={<Home />}></Route>
         <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/portfolio" element={<MyPortfolio />}></Route>
+        <Route path="/purpose" element={<Purpose />}></Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<MyProfile />}></Route>
           <Route path="review" element={<AddReview />}></Route>

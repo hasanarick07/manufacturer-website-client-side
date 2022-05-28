@@ -13,7 +13,7 @@ const BuyNowPage = () => {
   // console.log(user);
   // const userEmail = user?.email;
   const { data: tool, isLoading } = useQuery("buyNow", () =>
-    fetch(`http://localhost:5000/tool/${id}`, {
+    fetch(`https://enigmatic-fortress-05419.herokuapp.com/tool/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -61,7 +61,7 @@ const BuyNowPage = () => {
       orderQuantity: data.quantity,
       payableAmount: totalPrice,
     };
-    fetch("http://localhost:5000/order", {
+    fetch("https://enigmatic-fortress-05419.herokuapp.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -87,7 +87,7 @@ const BuyNowPage = () => {
     };
     const email = data.email;
     console.log(currentUser, email);
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://enigmatic-fortress-05419.herokuapp.com/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

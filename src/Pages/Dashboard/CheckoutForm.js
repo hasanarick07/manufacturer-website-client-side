@@ -15,14 +15,17 @@ const CheckoutForm = ({ data }) => {
   console.log(payableAmount);
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({price: payableAmount }),
-    })
+    fetch(
+      "https://enigmatic-fortress-05419.herokuapp.com/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ price: payableAmount }),
+      }
+    )
       .then(res => res.json())
       .then(data => {
         if (data?.clientSecret) {
@@ -82,7 +85,7 @@ const CheckoutForm = ({ data }) => {
         order: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://enigmatic-fortress-05419.herokuapp.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

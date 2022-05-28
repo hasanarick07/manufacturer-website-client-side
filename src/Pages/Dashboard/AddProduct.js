@@ -33,8 +33,8 @@ const AddProduct = () => {
             description: data.description,
             picture: img,
           };
-        //   conso???le.log(tool);
-          fetch("http://localhost:5000/tools", {
+          //   conso???le.log(tool);
+          fetch("https://enigmatic-fortress-05419.herokuapp.com/tools", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -44,7 +44,7 @@ const AddProduct = () => {
           })
             .then(res => res.json())
             .then(data => {
-            //   console.log(data.result.insertedId);
+              //   console.log(data.result.insertedId);
               if (data.result.insertedId) {
                 toast.success("tool Added successfully");
                 reset();
