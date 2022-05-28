@@ -14,7 +14,7 @@ const ManageProduct = ({ index, tool, refetch }) => {
       .then(result => {
         console.log(result);
         if (result.deletedCount) {
-          toast.success(`Order :${name} is Deleted`);
+          toast.success(`Tool : ${name} is Deleted`);
           refetch();
         }
       });

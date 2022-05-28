@@ -1,8 +1,9 @@
 import React from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Order = ({ order, index, refetch }) => {
-  const { customerName, email, orderQuantity, productName, _id } = order;
+  const { customerName, email, orderQuantity, productName, _id, paid,payableAmount } = order;
   const pName = productName.slice(0, 25);
   const handleDelete = id => {
     fetch(`http://localhost:5000/order/${id}`, {
@@ -35,10 +36,24 @@ const Order = ({ order, index, refetch }) => {
         {pName}
         <br />
         <span class="badge badge-ghost badge-sm">
-          Order Quantity : {orderQuantity}
+        Order Quantity : {orderQuantity}
         </span>
       </td>
-      <td>Purple</td>
+      <td>
+       
+        <span class="badge badge-outline  badge-lg">
+       
+          Payable Amount: {payableAmount}
+        </span>
+      </td>
+      <td>
+        {!paid && (
+          <Link to={`/dashboard/payment/${_id}`}>
+            <button className="btn btn-success btn-xs">Pay</button>
+          </Link>
+        )}
+        {paid && <span className="text-success ">Paid</span>}
+      </td>
       <th>
         <label for="delete" class="btn modal-button btn-xs btn-secondary">
           delete

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 const ManageOrder = ({ order, index, refetch }) => {
   // console.log(order);
-  const { customerName, email, orderQuantity, productName, _id } = order;
+  const { customerName, email, orderQuantity, productName, _id, payableAmount } = order;
   const pName = productName.slice(0, 25);
   const handleManageOrderDelete = id => {
     const url = `http://localhost:5000/order/${id}`;
@@ -41,9 +41,12 @@ const ManageOrder = ({ order, index, refetch }) => {
           Order Quantity : {orderQuantity}
         </span>
       </td>
+      <td><span class="badge badge-outline  badge-lg">
+      Payable Amount: {payableAmount}
+        </span></td>
       <td>Purple</td>
       <th>
-        <label for="delete" class="btn modal-button btn-xs btn-secondary">
+        <label for="delete" class="btn modal-button btn-xs  btn-secondary">
           delete
         </label>
       </th>

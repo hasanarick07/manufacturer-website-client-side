@@ -10,6 +10,7 @@ import ManageAllOrders from "./Pages/Dashboard/ManageAllOrders";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import Payment from "./Pages/Dashboard/Payment";
 import ErrorPage from "./Pages/Error/ErrorPage";
 import BuyNowPage from "./Pages/Home/BuyNowPage";
 import Home from "./Pages/Home/Home";
@@ -35,6 +36,7 @@ function App() {
           <Route index element={<MyProfile />}></Route>
           <Route path="review" element={<AddReview />}></Route>
           <Route path="myOrder" element={<MyOrders />}></Route>
+          <Route path="payment/:id" element={<Payment />}></Route>
           <Route
             path="manageAllOrders"
             element={

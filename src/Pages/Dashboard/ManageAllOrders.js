@@ -24,7 +24,8 @@ const ManageAllOrders = () => {
         <tr>
           <th></th>
           <th>Name &amp; Email</th>
-          <th>Product Name &amp; Quantity</th>
+          <th>Product Name <br /> &amp;  Quantity </th>
+          <th>Payable Amount </th>
           <th>Favorite </th>
           <th></th>
         </tr>

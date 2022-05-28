@@ -50,6 +50,8 @@ const BuyNowPage = () => {
   // console.log(disable);
   const onSubmit = data => {
     // console.log(name);
+    const orderQuantity = data.quantity;
+    const totalPrice = orderQuantity * price;
     const order = {
       productName: name,
       customerName: data.name,
@@ -57,6 +59,7 @@ const BuyNowPage = () => {
       address: data.address,
       number: data.number,
       orderQuantity: data.quantity,
+      payableAmount: totalPrice,
     };
     fetch("http://localhost:5000/order", {
       method: "POST",
@@ -69,7 +72,7 @@ const BuyNowPage = () => {
       .then(data => {
         // console.log(data);
         if (data.result.insertedId) {
-          toast.success("Order Placed");
+          toast.success(`Order Placed , Payable amount ${totalPrice}`);
 
           reset();
         } else {
