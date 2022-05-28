@@ -44,12 +44,12 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order, index) => (
+            {orders.map((order) => (
               <Order
                 key={order._id}
                 refetch={refetch}
                 order={order}
-                index={index}
+                
               />
             ))}
           </tbody>

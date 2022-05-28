@@ -1,7 +1,7 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const AdminMake = ({ index, user, refetch }) => {
+const AdminMake = ({ user, refetch }) => {
   console.log(user);
   const { userName, email, role } = user;
   const makeAdmin = () => {
@@ -21,7 +21,7 @@ const AdminMake = ({ index, user, refetch }) => {
   };
   return (
     <tr>
-      <th>{index + 1}</th>
+      <th></th>
       <td>{userName}</td>
       <td>{email}</td>
       <td>

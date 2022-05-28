@@ -31,8 +31,8 @@ const MakeAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((user, index) => (
-              <AdminMake user={user} refetch={refetch} index={index} />
+            {data.map(user => (
+              <AdminMake user={user} refetch={refetch} />
             ))}
           </tbody>
         </table>

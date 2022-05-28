@@ -31,12 +31,12 @@ const ManageProducts = () => {
           </tr>
         </thead>
         <tbody>
-          {tools.map((tool, index) => (
+          {tools.map((tool) => (
             <ManageProduct
               tool={tool}
               key={tool._id}
               refetch={refetch}
-              index={index}
+             
             />
           ))}
         </tbody>

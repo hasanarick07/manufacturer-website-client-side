@@ -1,7 +1,7 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const ManageProduct = ({ index, tool, refetch }) => {
+const ManageProduct = ({  tool, refetch }) => {
   const { name, price, picture, quantity, _id } = tool;
   const handleManageProductDelete = id => {
     fetch(`http://localhost:5000/tools/${id}`, {
@@ -21,7 +21,7 @@ const ManageProduct = ({ index, tool, refetch }) => {
   };
   return (
     <tr>
-      <th>{index + 1}</th>
+      <th></th>
       <td>
         <img className="lg:max-w-xs max-h-24" src={picture} alt="" />
       </td>

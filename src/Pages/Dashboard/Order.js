@@ -2,8 +2,18 @@ import React from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-const Order = ({ order, index, refetch }) => {
-  const { customerName, email, orderQuantity, productName, _id, paid,payableAmount } = order;
+const Order = ({ order, refetch }) => {
+  const {
+    customerName,
+    email,
+    orderQuantity,
+    productName,
+    _id,
+    paid,
+    payableAmount,
+    transactionId,
+  } = order;
+  console.log(paid);
   const pName = productName.slice(0, 25);
   const handleDelete = id => {
     fetch(`http://localhost:5000/order/${id}`, {
@@ -23,7 +33,7 @@ const Order = ({ order, index, refetch }) => {
   };
   return (
     <tr>
-      <td>{index + 1}</td>
+      <td></td>
       <td>
         <div class="flex items-center space-x-3">
           <div>
@@ -36,13 +46,11 @@ const Order = ({ order, index, refetch }) => {
         {pName}
         <br />
         <span class="badge badge-ghost badge-sm">
-        Order Quantity : {orderQuantity}
+          Order Quantity : {orderQuantity}
         </span>
       </td>
       <td>
-       
         <span class="badge badge-outline  badge-lg">
-       
           Payable Amount: {payableAmount}
         </span>
       </td>
@@ -53,9 +61,19 @@ const Order = ({ order, index, refetch }) => {
           </Link>
         )}
         {paid && <span className="text-success ">Paid</span>}
+        {paid && (
+          <span className="text-success ">
+            <br />
+            TransactionId : {transactionId}{" "}
+          </span>
+        )}
       </td>
       <th>
-        <label for="delete" class="btn modal-button btn-xs btn-secondary">
+        <label
+          for="delete"
+          disabled={paid === true}
+          class="btn modal-button btn-xs btn-secondary"
+        >
           delete
         </label>
       </th>

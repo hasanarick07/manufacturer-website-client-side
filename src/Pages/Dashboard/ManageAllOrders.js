@@ -26,17 +26,17 @@ const ManageAllOrders = () => {
           <th>Name &amp; Email</th>
           <th>Product Name <br /> &amp;  Quantity </th>
           <th>Payable Amount </th>
-          <th>Favorite </th>
+          <th>status </th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        {manageOrders.map((order, index) => (
+        {manageOrders.map((order) => (
           <ManageOrder
             key={order._id}
             refetch={refetch}
             order={order}
-            index={index}
+            
           />
         ))}
       </tbody>
