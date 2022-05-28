@@ -1,11 +1,10 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const Order = ({ order, index, refetch }) => {
-  const { customerName, email, orderQuantity, productName, _id } = order;
-  const pName = productName.slice(0, 25);
-  const handleDelete = id => {
-    fetch(`http://localhost:5000/order/${id}`, {
+const ManageProduct = ({ index, tool, refetch }) => {
+  const { name, price, picture, quantity, _id } = tool;
+  const handleManageProductDelete = id => {
+    fetch(`http://localhost:5000/tools/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -15,35 +14,26 @@ const Order = ({ order, index, refetch }) => {
       .then(result => {
         console.log(result);
         if (result.deletedCount) {
-          toast.success(`Order :${productName} is Deleted`);
+          toast.success(`Order :${name} is Deleted`);
           refetch();
         }
       });
   };
   return (
     <tr>
-      <td>{index + 1}</td>
+      <th>{index + 1}</th>
       <td>
-        <div class="flex items-center space-x-3">
-          <div>
-            <div class="font-bold">{customerName}</div>
-            <div class="text-sm opacity-50">{email}</div>
-          </div>
-        </div>
+        <img className="lg:max-w-xs max-h-24" src={picture} alt="" />
       </td>
+      <td>{name}</td>
+      <td>{price}</td>
+      <td>{quantity}</td>
+
       <td>
-        {pName}
-        <br />
-        <span class="badge badge-ghost badge-sm">
-          Order Quantity : {orderQuantity}
-        </span>
-      </td>
-      <td>Purple</td>
-      <th>
-        <label for="delete" class="btn modal-button btn-xs btn-secondary">
+      <label for="delete" class="btn modal-button btn-xs btn-secondary">
           delete
         </label>
-      </th>
+      </td>
       {
         <div>
           <input type="checkbox" id="delete" class="modal-toggle" />
@@ -64,7 +54,7 @@ const Order = ({ order, index, refetch }) => {
               <div class="modal-action">
                 <label
                   for="delete"
-                  onClick={() => handleDelete(_id)}
+                  onClick={() => handleManageProductDelete(_id)}
                   class="btn btn-error"
                 >
                   Yes
@@ -78,4 +68,4 @@ const Order = ({ order, index, refetch }) => {
   );
 };
 
-export default Order;
+export default ManageProduct;

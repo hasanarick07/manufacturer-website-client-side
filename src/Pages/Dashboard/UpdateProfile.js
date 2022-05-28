@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const UpdateProfile = ({ data, refetch }) => {
-  const { email } = data;
-//   console.log(email);
+  const { email, userName } = data;
+  // console.log(data);
   const {
     register,
     formState: { errors },
@@ -16,8 +16,6 @@ const UpdateProfile = ({ data, refetch }) => {
   });
   const onSubmit = data => {
     const currentUser = {
-      userName: data.name,
-      email: data.email,
       address: data.address,
       number: data.number,
     };
@@ -54,6 +52,8 @@ const UpdateProfile = ({ data, refetch }) => {
               <input
                 {...register("name", { required: true })}
                 type="text"
+                readOnly
+                value={userName || ""}
                 placeholder="Your Name"
                 class="input input-bordered w-full max-w-xs"
               />

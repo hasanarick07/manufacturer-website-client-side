@@ -1,10 +1,13 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const Order = ({ order, index, refetch }) => {
+const ManageOrder = ({ order, index, refetch }) => {
+  // console.log(order);
   const { customerName, email, orderQuantity, productName, _id } = order;
   const pName = productName.slice(0, 25);
-  const handleDelete = id => {
+  const handleManageOrderDelete = id => {
+    const url = `http://localhost:5000/order/${id}`;
+    console.log(url);
     fetch(`http://localhost:5000/order/${id}`, {
       method: "DELETE",
       headers: {
@@ -64,7 +67,7 @@ const Order = ({ order, index, refetch }) => {
               <div class="modal-action">
                 <label
                   for="delete"
-                  onClick={() => handleDelete(_id)}
+                  onClick={() => handleManageOrderDelete(_id)}
                   class="btn btn-error"
                 >
                   Yes
@@ -78,4 +81,4 @@ const Order = ({ order, index, refetch }) => {
   );
 };
 
-export default Order;
+export default ManageOrder;
