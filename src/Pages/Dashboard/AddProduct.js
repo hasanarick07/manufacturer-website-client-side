@@ -33,7 +33,7 @@ const AddProduct = () => {
             description: data.description,
             picture: img,
           };
-        //   console.log(tool);
+        //   conso???le.log(tool);
           fetch("http://localhost:5000/tools", {
             method: "POST",
             headers: {

@@ -24,7 +24,7 @@ const Payment = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  console.log(data);
+//   console.log(data);
   return (
     <div>
       <div class="card w-96 bg-neutral ">
@@ -37,7 +37,7 @@ const Payment = () => {
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-neutral">
         <div class="card-body"></div>
         <Elements stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm data={data} />
         </Elements>
       </div>
     </div>
